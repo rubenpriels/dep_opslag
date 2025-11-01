@@ -54,7 +54,7 @@ CREATE TABLE DimOlod (
 );
 
 CREATE TABLE FactLecture (
-    LectureKey INT PRIMARY KEY,
+    LectureKey INT,
     ClassgroupKey INT,
     RoomKey INT,
     OlodKey INT,
@@ -68,6 +68,7 @@ CREATE TABLE FactLecture (
     NumberPresent INT,
     AttendanceRate DECIMAL(5,2),
 
+    PRIMARY KEY (LectureKey, ClassgroupKey, RoomKey, OlodKey, StartDateKey, StartTimeKey),
     FOREIGN KEY (StartDateKey) REFERENCES DimDate(DateKey),
     FOREIGN KEY (StartTimeKey) REFERENCES DimTime(TimeKey),
     FOREIGN KEY (EndDateKey) REFERENCES DimDate(DateKey),
